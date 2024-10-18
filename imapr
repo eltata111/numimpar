@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Números Impares</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-size: 100px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="number">1</div>
+
+    <script>
+        let currentOdd = 1;
+        let previousOdd = null;
+
+        document.body.addEventListener('click', (event) => {
+            if (event.button === 0) { // Click izquierdo
+                previousOdd = currentOdd;
+                currentOdd += 2;
+                updateDisplay();
+            } else if (event.button === 2) { // Click derecho
+                if (previousOdd !== null) {
+                    currentOdd = previousOdd;
+                    previousOdd = null;
+                    updateDisplay();
+                }
+            }
+        });
+
+        function updateDisplay() {
+            document.getElementById('number').textContent = currentOdd;
+        }
+
+        // Para evitar el menú contextual en el clic derecho
+        document.body.addEventListener('contextmenu', (event) => {
+            event.preventDefault();
+        });
+    </script>
+</body>
+</html>
+
+echo "num impar" > index.html
